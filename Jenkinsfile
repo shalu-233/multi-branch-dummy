@@ -15,10 +15,10 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'building code....'
-                sh 'static code analysis'
-                sh 'archive the package into jfrog'
-                sh 'quality gate'
+                sh 'echo building code....'
+                sh 'echo static code analysis'
+                sh 'echo archive the package into jfrog'
+                sh 'echo quality gate'
             }
         }
     }
