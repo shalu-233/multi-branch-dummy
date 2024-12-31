@@ -10,7 +10,7 @@ pipeline {
                 branch: 'main'
             }
         }
-        stage(build) {
+        stage('build') {
             steps {
                 sh 'building code ....'
                 sh 'static code analysis'
