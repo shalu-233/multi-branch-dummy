@@ -15,7 +15,7 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'building code ....'
+                sh 'building code....'
                 sh 'static code analysis'
                 sh 'archive the package into jfrog'
                 sh 'quality gate'
