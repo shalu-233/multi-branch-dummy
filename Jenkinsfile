@@ -15,23 +15,23 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'building code ....'
-                sh 'static code analysis'
-                sh 'archive the package into jfrog'
-                sh 'quality gate'
+                sh 'echo building code ....'
+                sh 'echo static code analysis'
+                sh 'echo archive the package into jfrog'
+                sh 'echo quality gate'
             }
     
         }
         stage('deploy') {
             steps {
-                sh 'usign terraform create env'
-                sh 'run end to end system tests'
+                sh 'echo usign terraform create env'
+                sh 'echo run end to end system tests'
             }
         }
         stage('test') {
             steps {
-                sh 'run end to end system tests'
-                sh 'display test results'
+                sh 'echo run end to end system tests'
+                sh 'echo display test results'
             }
         }
     }
