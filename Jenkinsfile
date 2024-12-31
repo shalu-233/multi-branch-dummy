@@ -20,6 +20,20 @@ pipeline {
                 sh 'archive the package into jfrog'
                 sh 'quality gate'
             }
+    
+        }
+        stage('deploy') {
+            steps {
+                sh 'usign terraform create env'
+                sh 'use kubectl to deploy'
+                sh 'run end to end system tests'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'run end to end system tests'
+                sh 'display test results'
+            }
         }
     }
 }
