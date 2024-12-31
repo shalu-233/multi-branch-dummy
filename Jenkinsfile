@@ -3,6 +3,9 @@ pipeline {
     tools {
         maven 'MAVEN_3.9.9'
     }
+    triggers {
+        pollSCM('* * * * *')
+    }
     stages {
         stage('VCS') {
             steps {
@@ -15,11 +18,21 @@ pipeline {
                 sh 'building code....'
                 sh 'static code analysis'
                 sh 'archive the package into jfrog'
+                sh 'quality gate'
+            }
+    
+        }
+        stage('deploy') {
+            steps {
+                sh 'usign terraform create env'
+                sh 'use kubectl to deploy'
+                sh 'run end to end system tests'
             }
         }
-        stage('deploy-prod') {
+        stage('test') {
             steps {
-                sh 'deploy into production '
+                sh 'run end to end system tests'
+                sh 'display test results'
             }
         }
     }
