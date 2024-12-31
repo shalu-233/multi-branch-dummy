@@ -31,7 +31,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'run end to end system tests'
+                sh 'run end to end performance tests'
                 sh 'display test results'
             }
         }
